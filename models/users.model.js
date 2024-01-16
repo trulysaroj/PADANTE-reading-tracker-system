@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 // User Schema Definition:
 const userSchema = new mongoose.Schema({
-  full_name: {
+  name: {
     type: String,
     required: [true, "Fullname is required!"],
   },
@@ -21,7 +21,9 @@ const userSchema = new mongoose.Schema({
     required: [true, "Book Read is required!"],
     default: 0,
   },
-});
+},
+{ timestamps: true},
+);
 
 const usersModel = mongoose.model("users", userSchema);
 

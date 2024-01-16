@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const errorHandler = require("./handlers/errorHandlers");
 const mongoose = require("mongoose");
+const userRoutes = require("./modules/users/user.routes");
 
 // **************************************************************************************
 
@@ -29,7 +30,7 @@ require('./models/users.model')
 
 // **************************************************************************************
 // API Routes Start Here:
-
+app.use('/api/users', userRoutes)
 
 
 
