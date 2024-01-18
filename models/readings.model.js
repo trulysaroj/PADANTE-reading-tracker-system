@@ -42,7 +42,7 @@ const readingsSchema = new mongoose.Schema(
     status: {
       type: String,
       required: true,
-      enum: ["Reading", "Completed", "To Read"],
+      enum: ["Reading", "Finished", "To Read"],
     },
   },
   { timestamps: true }
