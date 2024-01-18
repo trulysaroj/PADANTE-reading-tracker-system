@@ -19,8 +19,12 @@ const userSchema = new mongoose.Schema({
   bookRead: {
     type: Number,
     required: [true, "Book Read is required!"],
-    default: 0,
+    // default: 0,
   },
+
+  reset_code: {
+    type: Number,
+  }
 },
 { timestamps: true},
 );

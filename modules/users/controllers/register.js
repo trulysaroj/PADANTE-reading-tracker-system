@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const jwtManager = require("../../../manager/jwtManager");
+const emailManager = require("../../../manager/emailManager");
 
 
 const register = async (req, res) => {
@@ -40,6 +41,18 @@ const register = async (req, res) => {
   // Generating access token from JWT(Jason webtoken):
   const accessToken = jwtManager(createdUser)
 
+
+  // Sending mail after register using nodemailer:
+  let receiver = email;
+  let message = "Welcome to the Padante, where you can keep track records of your book reading without any hassale."
+  let html = "<h1> Welcome to the Padant</h1> <br>where you can keep track records of your book reading without any hassale <br> "
+  let subject = "Greting from Padante Team";
+
+  await emailManager(receiver, message, html, subject );
+
+
+
+  // Response after validating all steps:
   res.status(201).json({
     status: "User created successfully !",
     accessToken: accessToken

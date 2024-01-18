@@ -4,6 +4,7 @@ const express = require("express");
 const errorHandler = require("./handlers/errorHandlers");
 const mongoose = require("mongoose");
 const userRoutes = require("./modules/users/user.routes");
+const readingRoutes = require("./modules/readings/readings.routes");
 
 // **************************************************************************************
 
@@ -12,7 +13,7 @@ mongoose
   .connect(process.env.mongo_connection, {})
   .then(() => {
     console.log("MongoDB connection successfull !!");
-  })
+  })  
   .catch(() => {
     console.log("MongoDB connection failed :(");
   });
@@ -25,12 +26,14 @@ app.use(express.json());
 
 // Initialization a Model:
 require('./models/users.model')
+require('./models/readings.model')
 
 
 
 // **************************************************************************************
 // API Routes Start Here:
 app.use('/api/users', userRoutes)
+app.use('/api/readings', readingRoutes)
 
 
 
